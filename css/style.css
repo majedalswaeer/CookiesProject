@@ -1,3 +1,5 @@
-table, tr, th{
+table, tr, th,td,h2{
     border: 1px solid ;
+    width: 50%;
+    font-family: 'helvetica neue',
 }
