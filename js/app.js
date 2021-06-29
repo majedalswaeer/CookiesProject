@@ -20,7 +20,6 @@ Shops.prototype.calcRandCustPerH = function (min, max) {
         let min = Math.ceil(this.minCust);
         let max = Math.floor(this.maxCust);
         let randCustt = Math.floor(Math.random() * (max - min + 1) + min);
-        console.log(randCustt);
         this.randCust.push(randCustt);
     }
 
@@ -30,7 +29,6 @@ Shops.prototype.calAvgCookiesPerH = function () {
     for (let i = 0; i < hours.length; i++) {
         this.avgCookiesPerH[i] = Math.ceil(this.randCust[i] * this.avgCookies);
         this.total = this.total + this.avgCookiesPerH[i];
-        console.log(this.total);
     }
 }
 
@@ -73,7 +71,7 @@ Shops.prototype.render = function () {
         trCont.appendChild(tdCont);
     }
     let tdCont = document.createElement('td');
-    tdCont.textContent = ` ${totalll}`;
+    tdCont.textContent = this.total;
     trCont.appendChild(tdCont);
     tableEL.appendChild(trCont);
 
@@ -85,14 +83,34 @@ Shops.prototype.render = function () {
 
 //____________________________________________________________________________________FOOTERFUNCTION
 function createFooter() {
-    let footerEL = document.createElement('tr');
-    footerEL.textContent = `Totals`
-    tableEL.appendChild(footerEL);
-    let tdELft2 = document.createElement('td');
-    footerEL.appendChild(tdELft2);
+    let footerEL = document.createElement('tfoot');
+    let tdEL = document.createElement('td');
+
+    tdEL.textContent='Totals'
+
+    footerEL.appendChild(tdEL);
+    tableEL.appendChild(footerEL)
+
+    let maintotal = 0
+
+    for(let i=0 ; i <hours.length ; i++){
+        let summ = 0;
+        let tdel = document.createElement('td');
+        for(let j = 0 ; j < shopss.length ; j++){
+            summ = summ + shopss[j].avgCookiesPerH[i]
+            
+            console.log(summ);
+        }
+        maintotal+=summ;
+        tdel.textContent = summ ;
+        footerEL.appendChild(tdel);
+    }
+    let totaltd = document.createElement('td')
+    totaltd.textContent = maintotal;
+    footerEL.appendChild(totaltd)
 
 }
-createFooter();
+
 
 //____________________________________________________________________________________
 
@@ -122,6 +140,8 @@ let LimaShop = new Shops('Lima Shop', 2, 16, 4.6);
 LimaShop.calcRandCustPerH();
 LimaShop.calAvgCookiesPerH();
 LimaShop.render();
+
+createFooter();
 
 
 
