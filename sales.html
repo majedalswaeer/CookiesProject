@@ -4,9 +4,31 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style2.css">
     <title>Document</title>
   </head>
   <body>
+    
+    <form action="" id="majedForm">
+      <legend>New Cookies shop</legend>
+      <br>
+      <label for="shopName"> New Shop Name</label>
+      <input type="text" id="shopName" name="shopName" placeholder="Name"/>
+
+      <label for="minCust">Miniumum Customers</label>
+      <input type="text" id="minCust" name="minCust" placeholder="Min">
+
+      <label for="maxCust"> Maximum Customer </label>
+      <input type="text" id="maxCust" name="maxCust" placeholder="Max" >
+
+      <label for="avgCookies">Expected Average Cookies</label>
+      <input type="text" id="avgCookies" name="avgCookies" placeholder="Avg">
+      <input type="submit" id="submit" value="Calculate!">
+      
+    </form>
+    <br>
+    <br>
     <div id="container"></div>
     <script src="js/app.js"></script>
   </body>
